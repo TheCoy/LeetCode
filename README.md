@@ -5,8 +5,9 @@ This is a repository for commit leetcode exercises.
 * [我的个人主页](thecoy.github.io)
 * My Email <coy20150428@gmail.com> 
 
+***
+
 ##### 2017-03-14
 - 测试提交
-* Git *** LeetCode *** MarkDown 
 * *代码示例：* `System.out.println("Hello,MarkDown")`
 
