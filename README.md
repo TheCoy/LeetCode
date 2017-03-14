@@ -2,7 +2,7 @@
 This is a repository for commit leetcode exercises.
 
 * ![我的头像](https://avatars0.githubusercontent.com/u/20471034?v=3&s=120)
-* [我的个人主页](https://github.com/TheCoy)
+* [我的个人主页](https://thecoy.github.io)
 * My Email <coy20150428@gmail.com> 
 
 ***
