@@ -13,7 +13,7 @@ class Solution(object):
         	return self.isMirror(root.left,root.right)
     def isMirror(self,p,q):
     	if p == None and q ==None:
-    			return True
+    		return True
     	if p == None or q == None:
-    			return False
+    		return False
     	return p.val == q.val and self.isMirror(p.left,q.right) and self.isMirror(p.right,q.left)
