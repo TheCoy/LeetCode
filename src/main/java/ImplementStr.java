@@ -1,5 +1,3 @@
-package LeetCode;
-
 /**
  * Example 1:
  *
