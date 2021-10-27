@@ -3,19 +3,19 @@ package golang
 type LRUCache struct {
 	size       int
 	capactity  int
-	hmap       map[int]*ListNode
-	head, tail *ListNode
+	hmap       map[int]*LruNode
+	head, tail *LruNode
 }
 
-type ListNode struct {
-	prev, next *ListNode
+type LruNode struct {
+	prev, next *LruNode
 	key, value int
 }
 
 func Constructor(capacity int) LRUCache {
 	l := LRUCache{
 		capactity: capacity,
-		hmap:      map[int]*ListNode{},
+		hmap:      map[int]*LruNode{},
 	}
 	l.head.next = l.tail
 	l.tail.prev = l.head
@@ -38,7 +38,7 @@ func (this *LRUCache) Set(key, value int) {
 		this.moveToHead(node)
 		return
 	}
-	newNode := &ListNode{
+	newNode := &LruNode{
 		key:   key,
 		value: value,
 	}
@@ -53,24 +53,24 @@ func (this *LRUCache) Set(key, value int) {
 
 }
 
-func (this *LRUCache) moveToHead(node *ListNode) {
+func (this *LRUCache) moveToHead(node *LruNode) {
 	this.removeNode(node)
 	this.addToHead(node)
 }
 
-func (this *LRUCache) addToHead(node *ListNode) {
+func (this *LRUCache) addToHead(node *LruNode) {
 	node.prev = this.head
 	node.next = this.head.next
 	this.head.next.prev = node
 	this.head.next = node
 }
 
-func (this *LRUCache) removeNode(node *ListNode) {
+func (this *LRUCache) removeNode(node *LruNode) {
 	node.prev.next = node.next
 	node.next.prev = node.prev
 }
 
-func (this *LRUCache) removeTail() *ListNode {
+func (this *LRUCache) removeTail() *LruNode {
 	node := this.tail.prev
 	this.removeNode(node)
 

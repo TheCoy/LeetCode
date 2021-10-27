@@ -1,27 +1,60 @@
 package golang
 
-//输入：[1,2]
-//输出：[[], [1], [2], [1,2]]
+import (
+	_ "math"
+	"sort"
+)
 
-func SubSet(arr []int) [][]int {
-    result := make([][]int, 0)
+//幂集
+func SubSet(nums []int) [][]int {
+	result := make([][]int, 0)
+	list := make([]int, 0)
 
-    empty := make([]int, 0)
-    trackBack(empty, arr, 0, &result)
+	subbacktrack(nums, 0, list, &result)
 
-    return result
+	return result
 }
 
-func trackBack(input, arr []int, deep int, result *[][]int) {
-    if deep == len(arr) {
-        *result = append(*result, input)
-        return
-    }
+func subbacktrack(nums []int, pos int, list []int, result *[][]int) {
+	res := make([]int, len(list))
+	copy(res, list)
+	*result = append(*result, res)
+	for i := pos; i < len(nums); i++ {
+		list = append(list, nums[i])
+		subbacktrack(nums, i+1, list, result)
+		list = list[0:len(list)-1]
+	}
+}
 
-    newInput := make([]int, len(input))
-    copy(newInput, input)
-    trackBack(newInput, arr, deep+1, result)
-    newInput = append(newInput, arr[deep])
-    trackBack(newInput, arr, deep+1, result)
+//全排列
+func permute(nums []int) [][]int {
+	result := make([][]int, 0)
+	visited := make([]bool, len(nums))
+	list := make([]int, 0)
+	sort.Ints(nums)
 
+	perBackTrack(nums, 0, list, visited, &result)
+
+	return result
+}
+
+func perBackTrack(nums []int, pos int, list []int, visited []bool, result *[][]int) {
+	if len(list) == len(nums) {
+		res := make([]int, len(list))
+		copy(res, list)
+		*result = append(*result, res)
+		return
+	}
+	for i := pos; i < len(nums); i++ {
+		if i != pos && nums[i] == nums[i-1] {
+			continue
+		}
+		if !visited[i] {
+			list = append(list, nums[i])
+			visited[i] = true
+			perBackTrack(nums, i+1, list, visited, result)
+			list = list[0:len(list)-1]
+			visited[i] = false
+		}
+	}
 }
