@@ -1,4 +1,4 @@
-package leetcode
+package golang
 
 type LRUCache struct {
 	size       int
