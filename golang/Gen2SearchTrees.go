@@ -31,15 +31,14 @@ func generateTree(start, end int) []*TreeNode {
 	return ans
 }
 
-
 func InsertIntoTree(root *TreeNode, n int) *TreeNode {
 	if root == nil {
-		return &TreeNode{Val:n}
+		return &TreeNode{Val: n}
 	}
 
-	if n > root.Val {
+	if n > root.Val.(int) {
 		root.Right = InsertIntoTree(root.Right, n)
-	}else {
+	} else {
 		root.Left = InsertIntoTree(root.Left, n)
 	}
 
