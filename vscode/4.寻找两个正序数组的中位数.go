@@ -75,16 +75,58 @@
 
 // @lc code=start
 func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
-	// len1, len2 := len(nums1), len(nums2)
-	// odd := (len1 + len2) % 2 == 1
+	if len(nums1) > len(nums2) {
+		return findMedianSortedArrays(nums2, nums1)
+	}
+	len1, len2 := len(nums1), len(nums2)
+	left, right := 0, len1
+	median1, median2 := 0, 0
 
-	// target := (len1+len2)/2
+	for left <= right {
+		i := (left + right) / 2
+		j := (len1+len2+1)/2 - i
+		leftAMax := math.MinInt32
+		if i != 0 {
+			leftAMax = nums1[i-1]
+		}
+		rightAMin := math.MaxInt32
+		if i != len1 {
+			rightAMin = nums1[i]
+		}
+		rightBMin := math.MaxInt32
+		if j != len2 {
+			rightBMin = nums2[j]
+		}
+		leftBMax := math.MinInt32
+		if j != 0 {
+			leftBMax = nums2[j-1]
+		}
+		if leftAMax <= rightBMin {
+			median1 = max(leftAMax, leftBMax)
+			median2 = min(rightAMin, rightBMin)
+			left = i + 1
+		} else {
+			right = i - 1
+		}
+	}
+	if (len1+len2)%2 == 0 {
+		return float64(median1+median2) / 2
+	} else {
+		return float64(median1)
+	}
+}
 
-	// for i,j := 0,0; i < len1 && j < len2 && i+j < target; {
-	// 	if nums1[i] < nums2[j] {
-	// 		i++
-	// 	}else
-	// }
+func min(x, y int) int {
+	if x < y {
+		return x
+	}
+	return y
+}
+func max(x, y int) int {
+	if x > y {
+		return x
+	}
+	return y
 }
 
 // @lc code=end
