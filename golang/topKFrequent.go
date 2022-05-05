@@ -1,6 +1,8 @@
 package golang
 
-import "container/heap"
+import (
+    "container/heap"
+)
 
 type IHeap [][2]int
 
@@ -9,7 +11,7 @@ func (h IHeap) Len() int {
 }
 
 func (h IHeap) Less(i,j int) bool {
-    return h[i][1] < h[j][1]
+    return h[i][1] > h[j][1]
 }
 
 func (h IHeap) Swap(i,j int) {
@@ -37,14 +39,11 @@ func TopKFrequent(nums []int, k int) []int {
     heap.Init(h)
     for num, count := range numMap {
         heap.Push(h, [2]int{num, count})
-        if h.Len() > k {
-            h.Pop()
-        }
     }
 
     result := make([]int, k)
     for i := 0; i < k; i++{
-        result[k-i-1]  = h.Pop().([2]int)[0]
+        result[i]  = heap.Pop(h).([2]int)[0]
     }
 
     return result

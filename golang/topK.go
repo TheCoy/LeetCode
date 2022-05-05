@@ -46,8 +46,8 @@ func (h *MyIntHeap) pop() (int, error) {
     return ans, nil
 }
 
-func outputTopK(input []int) []int {
-    result := make([]int, 10)
+func TopK(input []int, k int) []int {
+    result := make([]int, k)
     h := &MyIntHeap{
         arrVal: make([]int, 0),
     }
@@ -56,7 +56,7 @@ func outputTopK(input []int) []int {
         h.insert(n)
     }
     fmt.Println("after insert", h.arrVal)
-    for i := 0; i < 10; i++ {
+    for i := 0; i < k; i++ {
         num, _ := h.pop()
         fmt.Printf("%dth:%+v\n", i, h.arrVal)
         result[i] = num
