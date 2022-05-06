@@ -180,3 +180,13 @@ func TestMinSumOfTriangle(t *testing.T) {
 func TestWordBreak(t *testing.T) {
 	t.Log(WordBreak("dogs", []string{"dog", "s", "gs"}))
 }
+
+func TestGenNextMaxNumber(t *testing.T) {
+	x := 23121
+	nums := []int{3, 3, 9}
+	t.Log(GenNextMaxNumber(x, nums))
+}
+
+func TestLargestNumber(t *testing.T) {
+	t.Log(LargestNumber([]int{3, 30, 34, 5, 9}))
+}
