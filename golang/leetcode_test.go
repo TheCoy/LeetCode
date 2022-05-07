@@ -190,3 +190,11 @@ func TestGenNextMaxNumber(t *testing.T) {
 func TestLargestNumber(t *testing.T) {
 	t.Log(LargestNumber([]int{3, 30, 34, 5, 9}))
 }
+
+func TestCombinationSum2(t *testing.T) {
+	t.Log(CombinationSum2([]int{10,1,2,7,6,1,5}, 11))
+}
+
+func TestFindDuplicate(t *testing.T) {
+	t.Log(FindDuplicate([]int{1,2,3,4,2}))
+}
