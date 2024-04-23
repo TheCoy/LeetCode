@@ -198,3 +198,7 @@ func TestCombinationSum2(t *testing.T) {
 func TestFindDuplicate(t *testing.T) {
 	t.Log(FindDuplicate([]int{1,2,3,4,2}))
 }
+
+func TestNextGreaterElements(t *testing.T) {
+	t.Log(NextGreaterElements([]int{5,3,3,4,1}))
+}
